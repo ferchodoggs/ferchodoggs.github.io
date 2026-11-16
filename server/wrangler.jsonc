@@ -1,0 +1,13 @@
+{
+  // Servidor de FERCHODOGGS DASH. Cloudflare Workers Builds lo despliega solo en cada push a main (carpeta /server).
+  // worker.js ya viene compilado desde fd_project (esbuild); aquí no hay paso de build.
+  "name": "ferchodash",
+  "main": "worker.js",
+  "compatibility_date": "2026-11-01",
+  "no_bundle": true,
+  "observability": { "enabled": true },
+  "vars": { "ALLOWED_ORIGINS": "https://ferchodoggs.github.io" },
+  "d1_databases": [
+    { "binding": "DB", "database_name": "ferchodash", "database_id": "1cae4c58-0a4a-458d-948c-9e301e10fb66" }
+  ]
+}
