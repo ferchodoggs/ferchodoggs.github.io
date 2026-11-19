@@ -25,8 +25,8 @@ export class SideRenderer {
  geometry(state,width,height){
   const hero=state.hero||state.player||{x:state.distance||0,y:0,width:.8,height:.9};
   const speed=state.speed||state.stage?.speed||stageAt(state.tick||0).speed;
-  const visible=Math.max(13,speed*1.2),unit=Math.min(width/visible,height*.14);
-  const ground=height*.77,anchor=width*.24,cameraX=hero.x-anchor/unit;
+  const visible=Math.max(7.6,speed*.95),unit=Math.min(width/visible,height*.14);
+  const ground=height*.77,anchor=width*.18,cameraX=hero.x-anchor/unit;
   return{width,height,hero,speed,unit,ground,anchor,cameraX,
    project:(x,y)=>({x:(x-cameraX)*unit,y:ground-y*unit}),
    box:e=>({x:(e.x-cameraX)*unit,y:ground-(e.y+e.h)*unit,w:e.w*unit,h:e.h*unit})};
@@ -158,7 +158,7 @@ export class SideRenderer {
   }
   const size=dimensions(frame);
   if(frame&&size.w>0&&size.h>0){
-   const scale=Math.min(imageBox.w/this.frameBounds.w,imageBox.h/this.frameBounds.h),dw=size.w*scale,dh=size.h*scale;
+   const scale=Math.min(imageBox.w/this.frameBounds.w,imageBox.h/this.frameBounds.h)*(mode==='ship'?1:1.25),dw=size.w*scale,dh=size.h*scale; // 3.2: sprite 25 % más grande que la caja de colisión, apoyado en el suelo
    c.drawImage(frame,imageBox.x+(imageBox.w-dw)/2,imageBox.y+imageBox.h-dh,dw,dh);
   }else if(drawPlaceholder){c.strokeStyle='#FFF4E0';c.lineWidth=1.5;c.strokeRect(-w/2,-h,w,h);c.fillStyle='#FFF4E0';c.font=`${Math.max(8,h*.32)}px Arial`;c.textAlign='center';c.fillText('F',0,-h*.3);}
   c.restore();

@@ -2,10 +2,10 @@ import {VERSION,HZ,create,step,stageAt} from './engine.js';
 import {SideRenderer} from './render.js';
 import {PulseMusic} from './music.js';
 import {validateAlias} from './alias.js';
-const PREFIX='ferchodoggs-dash:side:v3.1:';
+const PREFIX='ferchodoggs-dash:side:v3.2:';
 const LEGACY_PREFERENCES='ferchodoggs-dash:side:v3:';
 const LIVE=new Set(['ferchodoggs.github.io','ferchodash.aquino160703.workers.dev']);
-export const CONFIG=Object.freeze({version:VERSION,apiBase:'/api',competitionEnabled:true,scope:'local-review-side-3.1',storagePrefix:PREFIX});
+export const CONFIG=Object.freeze({version:VERSION,apiBase:'/api',competitionEnabled:true,scope:'local-review-side-3.2',storagePrefix:PREFIX});
 const safeOrigin=()=>['http:','https:'].includes(location.protocol)&&!LIVE.has(location.hostname.toLowerCase().replace(/\.$/,''));
 const read=(key,fallback='')=>{try{return localStorage.getItem(PREFIX+key)??fallback;}catch{return fallback;}};
 const write=(key,value)=>{try{localStorage.setItem(PREFIX+key,value);}catch{/* Storage optional. */}};
@@ -25,7 +25,7 @@ async function request(path,body,{auth=true}={}){
  }catch(error){if(controller.signal.aborted)throw Error('El servidor tardó demasiado. La práctica sigue disponible.');throw error;}finally{clearTimeout(timeout);}
 }
 async function ensureSession(){if(token)return;if(!sessionPromise)sessionPromise=request('/session',{}, {auth:false}).then(result=>{if(typeof result.token!=='string'||result.scope!==CONFIG.scope||result.engine!==VERSION)throw Error('Sesión incompatible con esta versión.');token=result.token;write('token',token);}).finally(()=>sessionPromise=null);return sessionPromise;}
-export async function loadBoard(){try{const board=await request('/leaderboard',undefined,{auth:!!token});if(board.scope!=='local-review-side-3.1'||board.engine!==VERSION||board.rules?.prize)throw Error('Contrato de clasificación incompatible');return board;}catch{return null;}}
+export async function loadBoard(){try{const board=await request('/leaderboard',undefined,{auth:!!token});if(board.scope!=='local-review-side-3.2'||board.engine!==VERSION||board.rules?.prize)throw Error('Contrato de clasificación incompatible');return board;}catch{return null;}}
 function element(tag,text,className){const node=document.createElement(tag);if(text!==undefined)node.textContent=text;if(className)node.className=className;return node;}
 function loadImage(url){return new Promise((resolve,reject)=>{const image=new Image();let done=false;const timer=setTimeout(()=>finish(false),8000);function finish(ok){if(done)return;done=true;clearTimeout(timer);image.onload=image.onerror=null;ok?resolve(image):reject(Error('No se pudo cargar el arte original.'));}image.onload=()=>finish(true);image.onerror=()=>finish(false);image.src=url;});}
 let assetsPromise=null;

@@ -2,7 +2,7 @@
  * All input transitions apply BEFORE step(state.tick). No wall clock or random globals.
  * Physics positions and velocities use integers; one block = 240000 fixed units.
  */
-export const VERSION='ferchodoggs-dash/3.1.0';
+export const VERSION='ferchodoggs-dash/3.2.0';
 export const HZ=240, BPM=150, BEAT_TICKS=96, PATTERN_TICKS=768, MAX_CHUNK_TICKS=600;
 export const UNIT=240000, HERO_WIDTH=.8, HERO_HEIGHT=.9, SHIP_CEILING=6;
 export const JUMP_APEX_TAP=2.1332875, JUMP_APEX_HOLD=2.233095833333333;
@@ -106,10 +106,11 @@ function kernel(s,held){
 const jumpOffsets={0:[],1:[384],2:[192,576],3:[144,384,624],4:[96,288,480,672]};
 function densityIntegral(seconds){
  // Integral of the public target curve; one count is one planned action, not a frame.
- const a=Math.min(seconds,80);let total=.42*a+.33*a*a/160;
- const b=Math.min(100,Math.max(0,seconds-80));total+=.75*b+.25*b*b/200;
- const d=Math.min(80,Math.max(0,seconds-180));total+=d+.15*d*d/160;
- return total+Math.max(0,seconds-260)*1.15;
+ // 3.2: obstáculos más seguidos desde el inicio (0,75 → 1,0 → 1,2 → 1,25 acciones/s), techo de 4 por frase.
+ const a=Math.min(seconds,80);let total=.75*a+.25*a*a/160;
+ const b=Math.min(100,Math.max(0,seconds-80));total+=b+.2*b*b/200;
+ const d=Math.min(80,Math.max(0,seconds-180));total+=1.2*d+.05*d*d/160;
+ return total+Math.max(0,seconds-260)*1.25;
 }
 function makePattern(seed,index,safeFallback=false){
  const start=index*PATTERN_TICKS,end=start+PATTERN_TICKS,r=random((seed^Math.imul(index+1,0x9e3779b9))>>>0),stage=stageAt(start).stage;

@@ -337,41 +337,43 @@ input::placeholder,textarea::placeholder{color:var(--text-3)}
 <link rel="stylesheet" href="game.css"><style>.fd3-review-banner{font:12px/1.5 Arial,sans-serif;padding:10px 16px;background:#2A0E4A;color:#FFF4E0;text-align:center}</style><style id="premium-review">
 .top .brand-word{display:block;width:96px;height:47px;overflow:hidden;border-radius:0}
 .top .brand-word img{width:96px;height:auto;max-width:none;display:block;margin-top:-2px}
-.intro.hero{padding:10px 0 6px;background:radial-gradient(120% 70% at 85% 0%,rgba(139,92,246,.16),transparent 60%)}
-.hero-grid{display:grid;grid-template-columns:1.12fr 1fr;align-items:center;gap:10px;margin:4px 0 14px}
-.hero-copy h1{font-family:var(--display);font-size:clamp(27px,7.4vw,44px);line-height:1.02;letter-spacing:-.02em;margin:0 0 10px}
-.hero-copy p{margin:0;color:var(--text-2);font-size:15px;line-height:1.4}
-.hero-food{position:relative;aspect-ratio:1/1;border-radius:var(--r-l);overflow:hidden;box-shadow:0 18px 40px rgba(0,0,0,.45)}
-.hero-food img{width:100%;height:100%;object-fit:cover;object-position:50% 45%;display:block}
-.hero-food::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(9,9,13,.35),transparent 30%)}
-.intro.hero .buy{margin-top:0}
+.kicker{display:inline-block;font:700 11px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--lime)}
+.intro.hero{padding:12px 0 6px;background:none}
+.hero-card{position:relative;border-radius:24px;overflow:hidden;aspect-ratio:4/5;max-height:72vh;width:100%;margin:0 0 14px;box-shadow:0 30px 60px -20px rgba(139,92,246,.45),0 18px 40px rgba(0,0,0,.5);isolation:isolate}
+.hero-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%;transform:scale(1.02)}
+.hero-card::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(9,9,13,0) 38%,rgba(9,9,13,.55) 62%,rgba(9,9,13,.94) 100%);z-index:1}
+.hero-copy{position:absolute;left:0;right:0;bottom:0;padding:20px 20px 22px;z-index:2}
+.hero-copy h1{font-family:var(--display);font-size:clamp(34px,10vw,52px);line-height:.98;letter-spacing:-.03em;margin:10px 0 10px;text-wrap:balance;text-shadow:0 2px 18px rgba(0,0,0,.45)}
+.hero-copy p{margin:0;color:#E9E5F0;font-size:16px;line-height:1.4}
+.intro.hero .buy{margin-top:0;min-height:56px;font-size:17px;box-shadow:0 12px 30px -10px rgba(255,133,40,.7)}
 .intro.hero .meta{margin:12px 0 0}
-.provoca{padding:22px 0 8px}
-.provoca h2#provocaT{font-family:var(--display);font-size:24px;letter-spacing:-.01em;margin:0 0 12px}
+.provoca{padding:26px 0 8px}
+.provoca h2#provocaT{font-family:var(--display);font-size:26px;letter-spacing:-.02em;margin:0 0 14px}
 .catcards{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.catcard{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-m);overflow:hidden;display:flex;flex-direction:column}
-.catcard .ph{aspect-ratio:4/3;overflow:hidden;background:var(--surface-2)}
-.catcard .ph img{width:100%;height:100%;object-fit:cover;display:block}
-.catcard .bd{padding:10px 12px 12px;display:flex;flex-direction:column;gap:2px;flex:1}
-.catcard h3{margin:0;font-size:16px;line-height:1.25;font-family:var(--display)}
-.catcard .from{color:var(--text-2);font-size:14px;margin-bottom:8px}
-.catcard .from b{color:var(--text)}
-.catcard .pick{margin-top:auto;min-height:44px;border:0;border-radius:12px;background:var(--orange);color:var(--on-orange);font:700 15px var(--body);cursor:pointer}
+.catcard{position:relative;border-radius:18px;overflow:hidden;aspect-ratio:4/5;background:var(--surface-2);border:1px solid var(--line);isolation:isolate}
+.catcard img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s var(--ease)}
+.catcard:hover img{transform:scale(1.05)}
+.catcard::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(9,9,13,0) 45%,rgba(9,9,13,.9) 100%);z-index:1}
+.catcard .bd{position:absolute;left:0;right:0;bottom:0;padding:12px;z-index:2;display:flex;flex-direction:column;gap:2px}
+.catcard h3{margin:0;font-size:17px;line-height:1.15;font-family:var(--display);letter-spacing:-.01em}
+.catcard .from{color:#E2DEEA;font-size:13px;margin-bottom:8px}
+.catcard .from b{color:var(--lime);font-size:15px}
+.catcard .pick{min-height:42px;border:0;border-radius:12px;background:var(--orange);color:var(--on-orange);font:700 15px var(--body);cursor:pointer}
 .catcard .pick:focus-visible{outline:3px solid var(--lime);outline-offset:2px}
 .morecats{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:8px}
-.morecats button{min-height:44px;padding:0 14px;border-radius:999px;border:1px solid var(--line-2);background:transparent;color:var(--text);font:600 14px var(--body);cursor:pointer}
+.morecats button{min-height:44px;padding:0 14px;border-radius:999px;border:1px solid var(--line-2);background:var(--surface);color:var(--text);font:600 14px var(--body);cursor:pointer}
 .morecats button small{color:var(--text-2);font-weight:500}
-.dashcard{margin:16px 0 0;display:grid;grid-template-columns:96px 1fr;gap:14px;align-items:center;padding:12px 14px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-m)}
-.dashcard .art{width:96px;height:106px;display:flex;align-items:center;justify-content:center}
-.dashcard .art img{width:auto;height:100%;object-fit:contain}
-.dashcard .txt h2{font-family:var(--display);font-size:20px;line-height:1.1;margin:0;letter-spacing:-.01em}
-.dashcard .txt p{margin:2px 0 10px;color:var(--text-2);font-size:14px}
+.dashcard{margin:18px 0 0;display:grid;grid-template-columns:100px 1fr;gap:14px;align-items:center;padding:14px 16px;background:radial-gradient(120% 140% at 0% 0%,rgba(139,92,246,.28),transparent 55%),var(--surface);border:1px solid rgba(139,92,246,.35);border-radius:20px}
+.dashcard .art{width:100px;height:112px;display:flex;align-items:center;justify-content:center}
+.dashcard .art img{width:auto;height:100%;object-fit:contain;filter:drop-shadow(0 10px 18px rgba(0,0,0,.5))}
+.dashcard .txt h2{font-family:var(--display);font-size:21px;line-height:1.05;margin:6px 0 0;letter-spacing:-.01em}
+.dashcard .txt p{margin:4px 0 10px;color:var(--text-2);font-size:14px;line-height:1.35}
 .dash-actions{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
-.dashcard .play{margin:0;min-height:44px;padding:0 22px}
+.dashcard .play{margin:0;min-height:44px;padding:0 24px}
 .dash-actions .linkbtn{background:none;border:0;color:var(--text);text-decoration:underline;text-underline-offset:3px;font:600 15px var(--body);min-height:44px;cursor:pointer;padding:0}
-@media (min-width:700px){.hero-copy h1{font-size:46px}}
+@media (prefers-reduced-motion:reduce){.catcard img{transition:none}}
 </style></head>
-<body><aside class="fd3-review-banner">VERSIÓN DE REVISIÓN · NO ES LA TIENDA PUBLICADA · JUEGO EN MODO PRÁCTICA · SIN PREMIO</aside>
+<body><aside class="fd3-review-banner">VERSIÓN DE REVISIÓN · NO ES LA TIENDA PUBLICADA · JUEGO 3.2 EN PRÁCTICA · SIN PREMIO</aside>
 <div class="top">
   <div class="wrap">
     <a class="brand brand-word" href="#menuList" aria-label="Fercho Doggs, ir al menú"><img src="assets/i/9617e01d94.webp" alt="Fercho Doggs" width="300" height="427"></a>
@@ -382,12 +384,13 @@ input::placeholder,textarea::placeholder{color:var(--text-3)}
 
 <section class="intro hero" aria-labelledby="introT">
   <div class="wrap">
-    <div class="hero-grid">
+    <div class="hero-card">
+      <picture><source srcset="assets/p/hero-hamburguesa.webp" type="image/webp"><img src="assets/p/hero-hamburguesa.jpg" alt="Hamburguesa doble de Fercho Doggs" width="960" height="1280" fetchpriority="high"></picture>
       <div class="hero-copy">
+        <span class="kicker">Parque Libertadores · La Victoria</span>
         <h1 id="introT">Tu próximo antojo empieza aquí.</h1>
         <p>Elige, arma tu pedido y envíalo por WhatsApp.</p>
       </div>
-      <div class="hero-food"><img src="assets/i/c8cad0dff7.jpg" alt="Hamburguesa de Fercho Doggs" width="960" height="720" fetchpriority="high"></div>
     </div>
     <button class="buy" type="button" data-go="perros">Ver menú y pedir</button>
     <p class="meta">Parque Libertadores, La Victoria · Mié a dom desde las 6 pm · Vie y sáb hasta las 3 am</p>
@@ -400,8 +403,9 @@ input::placeholder,textarea::placeholder{color:var(--text-3)}
     <div class="game dashcard">
       <div class="art"><img src="assets/i/f4664797c1.webp" alt="Mascota original de Fercho Doggs corriendo" width="172" height="190" loading="lazy"></div>
       <div class="txt">
+        <span class="kicker">Mientras esperas</span>
         <h2>FERCHODOGGS DASH</h2>
-        <p>Un reto entre antojos.</p>
+        <p>Un reto entre antojos por las calles de La Victoria.</p>
         <div class="dash-actions"><button class="play" type="button" data-game-open>Jugar</button><button class="linkbtn" type="button" data-open-top3>Ver Top 3</button></div>
       </div>
     </div>
@@ -468,13 +472,13 @@ const QUITA = {
 };
 const EXTRAS = ['Queso amarillo','Tocineta','Huevo'];
 const MENU = [
-  { id:'perros', nombre:'Perros calientes', corto:'Perros', ico:'🌭', img:'assets/i/fc0170f48a.jpg', card:'assets/i/fca1416d62.webp', todos:true, base:'Pan, salchicha tipo Wiener, ensalada, cebolla, papitas y salsas.', quita:QUITA.perros, extras:true, items:[
+  { id:'perros', nombre:'Perros calientes', corto:'Perros', ico:'🌭', img:'assets/p/cat-perros.jpg', card:'assets/p/cat-perros.webp', todos:true, base:'Pan, salchicha tipo Wiener, ensalada, cebolla, papitas y salsas.', quita:QUITA.perros, extras:true, items:[
     { id:'llanerito', nombre:'Llanerito', desc:'Queso blanco', precio:2.5 },
     { id:'amarillito', nombre:'Amarillito', desc:'Queso amarillo', precio:3.5 },
     { id:'perro-especial', nombre:'Especial', desc:'Queso amarillo, tocineta y pepinillo', precio:4.5 },
     { id:'puyao', nombre:'Puyao', desc:'Queso amarillo, tocineta, pepinillo y huevos', precio:5.5 }
   ]},
-  { id:'hamburguesas', nombre:'Hamburguesas', corto:'Hamburguesas', ico:'🍔', img:'assets/i/c8cad0dff7.jpg', card:'assets/i/3e45ba02a0.webp', todos:true, base:'Pan brioche, proteína, lechuga, tomate, cebolla morada, pepinillo, papitas y salsas.', quita:QUITA.burger, extras:true, items:[
+  { id:'hamburguesas', nombre:'Hamburguesas', corto:'Hamburguesas', ico:'🍔', img:'assets/p/cat-hamburguesas.jpg', card:'assets/p/cat-hamburguesas.webp', todos:true, base:'Pan brioche, proteína, lechuga, tomate, cebolla morada, pepinillo, papitas y salsas.', quita:QUITA.burger, extras:true, items:[
     { id:'h-sencilla', nombre:'Sencilla', desc:'Carne', precio:6 },
     { id:'h-clasica', nombre:'Clásica', desc:'Carne, queso amarillo y tocineta', precio:7 },
     { id:'h-especial', nombre:'Especial', desc:'Carne o pollo, doble tocineta, doble huevo y queso amarillo', precio:9, elige:{ titulo:'¿Carne o pollo?', lista:[{n:'Carne'},{n:'Pollo'}] } },
@@ -490,7 +494,7 @@ const MENU = [
     { id:'medio-pepito', nombre:'½ Pepito', desc:'Pollo, carne o mixto', elige:{ titulo:'¿Qué proteína?', lista:[{n:'Pollo',p:10},{n:'Carne',p:11},{n:'Mixto',p:12}] } },
     { id:'pepito-fercho', nombre:'Pepito Fercho', desc:'El pepito completo. Pollo, carne o mixto', elige:{ titulo:'¿Qué proteína?', lista:[{n:'Pollo',p:20},{n:'Carne',p:22},{n:'Mixto',p:24}] } }
   ]},
-  { id:'shawarmas', nombre:'Shawarmas', corto:'Shawarmas', ico:'🌯', img:'assets/i/0b98752d18.jpg', card:'assets/i/fa432972d0.webp', todos:true, base:'Pan árabe, lechuga, tomate, cebolla, proteína, papitas, queso amarillo, tocineta y salsas.', quita:QUITA.pan, extras:true, items:[
+  { id:'shawarmas', nombre:'Shawarmas', corto:'Shawarmas', ico:'🌯', img:'assets/p/cat-shawarmas.jpg', card:'assets/p/cat-shawarmas.webp', todos:true, base:'Pan árabe, lechuga, tomate, cebolla, proteína, papitas, queso amarillo, tocineta y salsas.', quita:QUITA.pan, extras:true, items:[
     { id:'shaw-normal', nombre:'Shaw Normal', desc:'Pollo o carne', elige:{ titulo:'¿Qué proteína?', lista:[{n:'Pollo',p:10},{n:'Carne',p:11}] } },
     { id:'shaw-mixto', nombre:'Shaw Mixto', desc:'Carne y pollo', precio:12 }
   ]},
@@ -498,7 +502,7 @@ const MENU = [
     { id:'club-sencillo', nombre:'Sencillo', desc:'Pan de sándwich, jamón, queso amarillo, huevo, tomate y lechuga', precio:10 },
     { id:'club-especial', nombre:'Especial', desc:'Tocineta, jamón, queso amarillo, huevo, tomate, lechuga y maíz, coronado con carne y pollo', precio:15 }
   ]},
-  { id:'papas', nombre:'Papas y salchipapas', corto:'Papas', ico:'🍟', img:'assets/i/3467c2485f.jpg', card:'assets/i/59162e8c59.webp', base:'Bien crujientes, con salsas.', quita:QUITA.papas, extras:false, items:[
+  { id:'papas', nombre:'Papas y salchipapas', corto:'Papas', ico:'🍟', img:'assets/p/cat-papas.jpg', card:'assets/p/cat-papas.webp', base:'Bien crujientes, con salsas.', quita:QUITA.papas, extras:false, items:[
     { id:'papas', nombre:'Papas fritas', desc:'Con salsas, queso amarillo y topping de tocineta', elige:{ titulo:'¿Qué tamaño?', lista:[{n:'100 gr',p:2.5},{n:'300 gr',p:5.5},{n:'500 gr',p:9.5}] } },
     { id:'salchi-peq', nombre:'Salchipapa Pequeña', desc:'300 gr de papas, salchichas y salsas', precio:7.5 },
     { id:'salchi-gde', nombre:'Salchipapa Grande', desc:'500 gr de papas, salchichas, proteína, queso amarillo, salsas y tocineta', precio:13, elige:{ titulo:'¿Qué proteína?', lista:[{n:'Carne'},{n:'Pollo'},{n:'Mixto'}] } }
@@ -888,7 +892,7 @@ if (count()) scheduleNudge(8000);
   const list = MENU.filter(c=>c.card||c.img);
   const rest = MENU.filter(c=>!(c.card||c.img));
   const min = c => Math.min(...c.items.map(fromPrice));
-  document.getElementById('catCards').innerHTML = list.map(c=>`<article class="catcard"><div class="ph"><img src="${c.card||c.img}" alt="${esc(c.nombre)} de Fercho Doggs" loading="lazy"></div><div class="bd"><h3>${esc(c.nombre)}</h3><span class="from">Desde <b>${money(min(c))}</b></span><button class="pick" type="button" data-go="${c.id}">Elegir</button></div></article>`).join('')
+  document.getElementById('catCards').innerHTML = list.map(c=>`<article class="catcard"><img src="${c.card||c.img}" alt="${esc(c.nombre)} de Fercho Doggs" loading="lazy"><div class="bd"><h3>${esc(c.nombre)}</h3><span class="from">Desde <b>${money(min(c))}</b></span><button class="pick" type="button" data-go="${c.id}">Elegir</button></div></article>`).join('')
     + (rest.length ? `<div class="morecats">${rest.map(c=>`<button type="button" data-go="${c.id}">${esc(c.corto)} <small>desde ${money(min(c))}</small></button>`).join('')}</div>` : '');
   document.addEventListener('click', e => { if (e.target.closest('[data-open-top3]')) { if (!document.getElementById('openBoard')) paintPodium(); document.getElementById('openBoard')?.click(); } });
 })();</script></body>
